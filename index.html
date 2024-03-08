@@ -7,13 +7,64 @@
 
     <link rel="stylesheet" href="./scriptfonts/fonts.css" />
     <script src="./font-toggler.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #e5e5f7;
+        opacity: 0.8;
+        background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+        background-size: 10px 10px;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      font-toggler {
+        height: 4em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      footer {
+        position: absolute;
+        bottom: 0;
+        padding: 1em;
+        font-size: 0.8em;
+      }
+      a {
+        color: #444cf7;
+      }
+      span {
+        font-size: 2em;
+      }
+      pre {
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
-    <font-toggler every_s="2">
-      <h1>Hello! This is a font! :)</h1>
-    </font-toggler>
-    <font-toggler stylesheet="fonts.css" every_s="3">
-      <p>I want this text to change!</p>
-    </font-toggler>
+    <main>
+      <pre>&lt;font-toggler&gt;</pre>
+      <font-toggler every_s="2">
+        <span>I am fickle in nature</span>
+      </font-toggler>
+      <pre>&lt;/font-toggler&gt;</pre>
+    </main>
+    <footer>
+      by <a href="https://github.com/alifeee/" target="_blank">alifeee</a> ·
+      <a href="https://github.com/alifeee/font-toggler/" target="_blank">
+        GitHub
+      </a>
+    </footer>
   </body>
 </html>
