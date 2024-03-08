@@ -2,24 +2,23 @@ class FontToggler extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: "open" });
+    this.every_s = 10;
+    this.stylesheet = "fonts.css";
   }
   connectedCallback() {
+    if (this.hasAttribute("every_s"))
+      this.every_s = this.getAttribute("every_s");
+    if (this.hasAttribute("stylesheet"))
+      this.stylesheet = this.getAttribute("stylesheet");
+
     this.render();
   }
   render() {
-    const div = document.createElement("div");
-    const slot = document.createElement("slot");
-
-    div.appendChild(slot);
-
-    this.shadowRoot.appendChild(div);
-
     let stylesheets = document.styleSheets;
     let rules;
     for (let i = 0; i < stylesheets.length; i++) {
       let stylesheet = stylesheets[i];
-      if (stylesheet.href && stylesheet.href.includes("fonts.css")) {
+      if (stylesheet.href && stylesheet.href.includes(this.stylesheet)) {
         rules = stylesheet.cssRules;
       }
     }
@@ -33,13 +32,15 @@ class FontToggler extends HTMLElement {
         selectors.push(selector);
       }
     }
-
-    let interval = setInterval(() => {
+    this.interval = setInterval(() => {
       let randomIndex = Math.floor(Math.random() * selectors.length);
       // remove final class and add new class
-      div.classList = "";
-      div.classList.add(selectors[randomIndex]);
-    }, 1000);
+      this.classList = "";
+      this.classList.add(selectors[randomIndex]);
+    }, this.every_s * 1000);
+  }
+  disconnectedCallback() {
+    clearInterval(this.interval);
   }
 }
 
