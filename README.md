@@ -1,3 +1,5 @@
+> [!CAUTION]
+> MOVED! see <https://git.alifeee.net/font-toggler/about/>
 # Font Toggler
 
 A web component to toggle the font of elements inside it. [Demo](https://alifeee.co.uk/font-toggler/).
